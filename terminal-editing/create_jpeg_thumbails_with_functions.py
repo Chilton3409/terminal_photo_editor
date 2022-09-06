@@ -59,7 +59,7 @@ def create_images(infile):
                     create_thumbnail(im)
                
                     im.save(outfile, "JPEG", quality='maximum', subsampling=0)
-                    print("file {} created.".format(outfile))
+                    
                     move_file(str(outfile), 'black_white')
                     
 
