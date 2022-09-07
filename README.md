@@ -8,4 +8,5 @@ use the input module to allow the user to determnine where to place edited files
 
 I would like it create thumbnails, black and whites, and other types of images
 
+I also need to incorporate unit testing
 
