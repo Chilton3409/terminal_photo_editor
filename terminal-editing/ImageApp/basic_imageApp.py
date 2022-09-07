@@ -16,17 +16,20 @@ from PIL import ImageOps
 class ImageApp():
     def __init__(self):
         self.files = []
+        self.old_files = []
 
     def unpack(self):
+        dst=input("Where would you like to store these files.")
         for file in self.files:
-            file_task.move_file(str(file), dst=input("Where would you like to store these files."))
+            file_task.move_file(src=str(file), dst=dst)
             print("The file {} has been moved.".format(file))
 
     def create_images(self, infile):
         infile = os.listdir()
         for infile in glob.glob("*.jpg"):
-          outfile = os.path.splitext(infile)[0] + "_edited.jpg"
-        if infile != outfile:
+            outfile = os.path.splitext(infile)[0] + "_edited.jpg"
+          
+            if infile != outfile:
                 try:
                     with Image.open(infile) as im:
                     #im1 = im.filter(ImageFilter.DETAIL)
@@ -39,6 +42,7 @@ class ImageApp():
                
                         im.save(outfile, "JPEG", quality='maximum', subsampling=0,)
                         self.files.append(outfile)
+                        self.old_files.append(infile)
                         #file_task.move_file(str(outfile), 'black_white')
 
             #print(infile)
